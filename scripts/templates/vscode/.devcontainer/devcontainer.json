@@ -1,0 +1,19 @@
+{
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": ".",
+        "args": {}
+    },
+    "features": {
+        "ghcr.io/devcontainers/features/python:1": {
+            "version": "latest"
+        },
+        "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
+            "version": "latest"
+        }
+    },
+    "initializeCommand": [
+        "bash ${localWorkspaceFolder}/.devcontainer/bootstrap_lbdc_loader.sh",
+        "bash ${localWorkspaceFolder}/.devcontainer/.lbdc-cache/scripts/loader/load_lbdc.sh"
+    ]
+}

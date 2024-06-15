@@ -1,0 +1,1 @@
+FROM localbuilddevcontainer:REPLACE_LBDC_TAG

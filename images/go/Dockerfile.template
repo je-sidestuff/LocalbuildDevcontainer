@@ -1,0 +1,49 @@
+# syntax=docker/dockerfile:1
+
+## Version arg options
+ARG GO_VERSION=1.22-bullseye
+
+
+## Binary image source options
+
+
+## Devcontainer source image
+FROM mcr.microsoft.com/devcontainers/go:${GO_VERSION}
+
+
+## Copy rootfs and base utilities
+COPY rootfs /
+COPY install_devcontainer_utilities.sh /tmp/install_devcontainer_utilities.sh
+
+
+# Install additional utilities in the devcontainer directly.
+RUN bash /tmp/install_devcontainer_utilities.sh
+
+
+## Copy binary installer options
+
+
+## Run binary installer options
+
+
+## Copy binary image source options
+
+
+## Composed devcontainer metadata
+LABEL devcontainer.metadata='[{ \
+  // Devcontainer json top level options \
+  "customizations": { \
+        "vscode": { \
+            "settings": { \
+                // Devcontainer json vscode settings options \
+            }, \
+            "extensions": [ \
+                // Devcontainer json vscode extension options \
+            ] \
+        } \
+  }, \
+  "mounts": [ \
+    // Devcontainer json mount options \
+  ] \
+}]'
+
