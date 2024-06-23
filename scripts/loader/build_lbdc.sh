@@ -1,3 +1,3 @@
 #! /bin/bash
 
-docker build $LBDC_WORKING_LOCATION -t localbuilddevcontainer:across
+docker build $LBDC_WORKING_LOCATION -t localbuilddevcontainer:latest

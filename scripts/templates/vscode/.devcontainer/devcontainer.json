@@ -12,8 +12,5 @@
             "version": "latest"
         }
     },
-    "initializeCommand": [
-        "bash ${localWorkspaceFolder}/.devcontainer/bootstrap_lbdc_loader.sh",
-        "bash ${localWorkspaceFolder}/.devcontainer/.lbdc-cache/scripts/loader/load_lbdc.sh"
-    ]
+    "initializeCommand": "bash ${localWorkspaceFolder}/.devcontainer/launch.sh"
 }
