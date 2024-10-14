@@ -53,7 +53,7 @@ case $LBDC_LOADER_RETRIEVAL_STRATEGY in
     ;;
 
   submodule)
-    echo "Installing from git source is not yet supported."
+    echo "Installing as a git submodule is not yet supported."
     exit 1
     ;;
 

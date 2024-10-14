@@ -1,14 +1,14 @@
 # syntax=docker/dockerfile:1
 
 ## Version arg options
-ARG GO_VERSION=1.22-bullseye
+ARG BASE_VERSION=mcr.microsoft.com/devcontainers/go:1.22-bullseye
 
 
 ## Binary image source options
 
 
 ## Devcontainer source image
-FROM mcr.microsoft.com/devcontainers/go:${GO_VERSION}
+FROM ${BASE_VERSION}
 
 
 ## Copy rootfs and base utilities

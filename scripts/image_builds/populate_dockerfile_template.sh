@@ -7,7 +7,7 @@ TEMP_DIR=${LBDC_WORKING_LOCATION}
 
 echo "Creating temporary directory $TEMP_DIR"
 
-cp -r $SCRIPT_DIR/../../images/go/* $TEMP_DIR/
+cp -r $SCRIPT_DIR/../../images/template/* $TEMP_DIR/
 
 mv $TEMP_DIR/Dockerfile.template $TEMP_DIR/Dockerfile
 
@@ -16,8 +16,7 @@ DOCKERFILE_TEMPLATE_OPTIONS=("extension_option_params.sh" "setting_option_params
 for option_type in "${DOCKERFILE_TEMPLATE_OPTIONS[@]}"
 do
     source $SCRIPT_DIR/$option_type
-    # for file in "varfile.sh" "varfile2.sh" "varfile3.sh"
-    for file in $LBDC_BUILD_CONFIGG_FILES
+    for file in $LBDC_BUILD_CONFIG_FILES
     do
         # TODO - this string we are unsetting/loading needs to be driven by the params definition file
         unset $RP_OPTION_TYPE
@@ -32,5 +31,3 @@ do
 done
 
 cat $TEMP_DIR/Dockerfile
-
-# docker build $TEMP_DIR -t localbuilddevcontainer:across
