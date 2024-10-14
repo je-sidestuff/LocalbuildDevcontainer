@@ -1,3 +1,3 @@
 #! /bin/bash
 
-docker build $LBDC_WORKING_LOCATION -t localbuilddevcontainer:x1
+docker build $LBDC_WORKING_LOCATION -t localbuilddevcontainer:x2temp

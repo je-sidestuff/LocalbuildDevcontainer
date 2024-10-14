@@ -19,4 +19,4 @@ cp ${SCRIPT_DIR}/../client/bootstrap_lbdc_loader.sh ${SCRIPT_DIR}/../bin/.devcon
 cp ${SCRIPT_DIR}/config/lbdc_repo_config.sh ${SCRIPT_DIR}/../bin/
 
 # Perform in-place replacements (TODO - this should detect and traverse, not know about files)
-sed -i 's/REPLACE_LBDC_TAG/latest/g' ${SCRIPT_DIR}/../bin/.devcontainer/Dockerfile
+sed -i 's/REPLACE_LBDC_TAG/x2temp/g' ${SCRIPT_DIR}/../bin/.devcontainer/Dockerfile
