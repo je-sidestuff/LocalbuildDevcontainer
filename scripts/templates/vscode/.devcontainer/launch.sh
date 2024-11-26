@@ -4,6 +4,6 @@
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
-$SCRIPT_DIR/bootstrap_lbdc_loader.sh
+"${SCRIPT_DIR}/bootstrap_lbdc_loader.sh"
 
-$SCRIPT_DIR/.lbdc-cache/scripts/loader/load_lbdc.sh
+"${SCRIPT_DIR}/.lbdc-cache/scripts/loader/load_lbdc.sh"

@@ -13,14 +13,30 @@ To call it from the latest version:
 
 To call it for a specific version:
 
-```
+```bash
 export VERSION="/refs/heads/feat/first_draft"
 wget https://raw.githubusercontent.com/je-sidestuff/LocalbuildDevcontainer${VERSION}/scripts/client/install_lbdc.sh
 bash install_lbdc.sh
 rm install_lbdc.sh
 ```
 
+To install from a working copy on your filesystem:
+
+```bash
+export LBDC_INSTALL_SOURCE_TYPE="local"
+export LBDC_INSTALL_SOURCE_LOCATION="<path_to_repo>"
+bash "${LBDC_INSTALL_SOURCE_LOCATION}/scripts/client/install_lbdc.sh"
+```
+
 Next, open your development environment and the LBDC will bootstrap itself and build.
+
+# How it works
+
+The LBDC lifecycle has the following subsections:
+- install
+- bootstrapping
+- loading
+- running
 
 # Configuration Concepts
 

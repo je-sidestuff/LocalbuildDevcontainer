@@ -14,6 +14,7 @@ done
 
 # Copy universal files (TODO - this should read a config, not know about files)
 cp ${SCRIPT_DIR}/../client/bootstrap_lbdc_loader.sh ${SCRIPT_DIR}/../bin/.devcontainer/
+cp ${SCRIPT_DIR}/../client/test_bootstrap_lbdc_loader.sh ${SCRIPT_DIR}/../bin/.devcontainer/
 
 # TODO - the repo config values need to be driven
 cp ${SCRIPT_DIR}/config/lbdc_repo_config.sh ${SCRIPT_DIR}/../bin/

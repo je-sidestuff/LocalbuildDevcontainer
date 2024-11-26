@@ -31,19 +31,19 @@ RUN bash /tmp/install_devcontainer_utilities.sh
 
 ## Composed devcontainer metadata
 LABEL devcontainer.metadata='[{ \
-  // Devcontainer json top level options \
+  # Devcontainer json top level options \
   "customizations": { \
         "vscode": { \
             "settings": { \
-                // Devcontainer json vscode settings options \
+                # Devcontainer json vscode settings options \
             }, \
             "extensions": [ \
-                // Devcontainer json vscode extension options \
+                # Devcontainer json vscode extension options \
             ] \
         } \
   }, \
   "mounts": [ \
-    // Devcontainer json mount options \
+    # Devcontainer json mount options \
   ] \
 }]'
 
