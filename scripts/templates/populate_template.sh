@@ -6,6 +6,7 @@
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 # Copy the templates into the re-created bin directory
+echo "Removing and recreating directory: ${SCRIPT_DIR}/../bin"
 rm -rf ${SCRIPT_DIR}/../bin
 mkdir ${SCRIPT_DIR}/../bin
 for i in `ls -I . -I .. -a ${SCRIPT_DIR}/${LBDC_INSTALL_TYPE}/`; do
@@ -21,3 +22,5 @@ cp ${SCRIPT_DIR}/config/lbdc_repo_config.sh ${SCRIPT_DIR}/../bin/
 
 # Perform in-place replacements (TODO - this should detect and traverse, not know about files)
 sed -i 's/REPLACE_LBDC_TAG/x2temp/g' ${SCRIPT_DIR}/../bin/.devcontainer/Dockerfile
+
+echo "Finished populating ${SCRIPT_DIR}/../bin/.devcontainer"

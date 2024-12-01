@@ -83,7 +83,6 @@ case $LBDC_INSTALL_SOURCE_TYPE in
     mv ${LBDC_WORKING_LOCATION}/LocalbuildDevcontainer/LocalbuildDevcontainer-feat-first_draft/* ${LBDC_WORKING_LOCATION}/LocalbuildDevcontainer/
     mv ${LBDC_WORKING_LOCATION}/LocalbuildDevcontainer/LocalbuildDevcontainer-feat-first_draft/.* ${LBDC_WORKING_LOCATION}/LocalbuildDevcontainer/
     rm -rf ${LBDC_WORKING_LOCATION}/LocalbuildDevcontainer/LocalbuildDevcontainer-feat-first_draft
-    exit 1
     ;;
 
   local)
