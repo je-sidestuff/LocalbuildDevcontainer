@@ -78,7 +78,8 @@ case $LBDC_INSTALL_SOURCE_TYPE in
     rm -rf ${LBDC_WORKING_LOCATION}/.lbdc-install
     mkdir -p ${LBDC_WORKING_LOCATION}/.lbdc-install
     curl -L https://github.com/je-sidestuff/LocalbuildDevcontainer/archive/refs/heads/${LBDC_INSTALL_GIT_LOCATION}.zip -o ${LBDC_WORKING_LOCATION}/.lbdc-install/lbdc.zip
-    unzip ${LBDC_WORKING_LOCATION}/.lbdc-install/lbdc.zip -d ${LBDC_WORKING_LOCATION}/LocalbuildDevcontainer/
+    echo "Calling: unzip ${LBDC_WORKING_LOCATION}/.lbdc-install/lbdc.zip -d ${LBDC_WORKING_LOCATION}/LocalbuildDevcontainer"
+    unzip ${LBDC_WORKING_LOCATION}/.lbdc-install/lbdc.zip -d ${LBDC_WORKING_LOCATION}/LocalbuildDevcontainer
     exit 1
     ;;
 
