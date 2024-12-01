@@ -69,8 +69,16 @@ echo "Working directory for LBDC installer: ${LBDC_WORKING_LOCATION}"
 case $LBDC_INSTALL_SOURCE_TYPE in
 
   git)
-    echo "Installing from git source is not yet supported."
-    clean_up_working_location
+    if [ -z "$LBDC_INSTALL_GIT_LOCATION" ]; then
+        echo "For local install source type the variable LBDC_INSTALL_GIT_LOCATION must be defined."
+        clean_up_working_location
+        exit 1
+    fi
+    echo "Retrieving LBDC data from git location ${LBDC_INSTALL_GIT_LOCATION}."
+    rm -rf ${LBDC_WORKING_LOCATION}/.lbdc-install
+    mkdir -p ${LBDC_WORKING_LOCATION}/.lbdc-install
+    curl -L https://github.com/je-sidestuff/LocalbuildDevcontainer/archive/refs/heads/${LBDC_INSTALL_GIT_LOCATION}.zip -o ${LBDC_WORKING_LOCATION}/.lbdc-install/lbdc.zip
+    unzip ${LBDC_WORKING_LOCATION}/.lbdc-install/lbdc.zip -d ${LBDC_WORKING_LOCATION}/LocalbuildDevcontainer/
     exit 1
     ;;
 

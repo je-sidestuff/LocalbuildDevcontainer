@@ -12,16 +12,39 @@ verify_install_success () {
 
 # Set up temporary testing dir
 export LBDC_TEST_DIR=$(mktemp -d -t lbdc-e2e-test-XXXX)
+export SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 export TEST_LOG="${LBDC_TEST_DIR}/test_log.txt"
 cd "${LBDC_TEST_DIR}" # TODO - should not need to change dirs.
+echo "Calling ${SCRIPT_DIR}/$( basename ${0})"
 echo "Performing end to end test in test dir ${LBDC_TEST_DIR}." | tee -a "${TEST_LOG}"
 
-# Execute Install Phase
-export LBDC_INSTALL_SOURCE_TYPE="local"
-export LBDC_INSTALL_SOURCE_LOCATION=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )/../../" &> /dev/null && pwd )
-export LBDC_INSTALL_NOCLEAN_WORKING_DIR="true"
-echo "Calling: ${LBDC_INSTALL_SOURCE_LOCATION}/scripts/client/install_lbdc.sh" | tee -a "${TEST_LOG}"
-bash "${LBDC_INSTALL_SOURCE_LOCATION}/scripts/client/install_lbdc.sh" 2>&1 | tee -a "${TEST_LOG}"
+if [ -z "${LBDC_TEST_TYPE}" ]; then
+    export LBDC_TEST_TYPE="local"
+fi
+
+if [ "${LBDC_TEST_TYPE}" == "local" ]; then
+    export LBDC_INSTALL_SOURCE_TYPE="local"
+    export LBDC_INSTALL_SOURCE_LOCATION="${SCRIPT_DIR}/../.."
+    export LBDC_INSTALL_NOCLEAN_WORKING_DIR="true"
+    echo "Installing from local source:"
+    echo " - LBDC_INSTALL_SOURCE_LOCATION : $LBDC_INSTALL_SOURCE_LOCATION"
+    echo " - LBDC_INSTALL_NOCLEAN_WORKING_DIR : $LBDC_INSTALL_NOCLEAN_WORKING_DIR"
+
+    # Execute Install Phase
+    echo "Calling: ${LBDC_INSTALL_SOURCE_LOCATION}/scripts/client/install_lbdc.sh" | tee -a "${TEST_LOG}"
+    bash "${LBDC_INSTALL_SOURCE_LOCATION}/scripts/client/install_lbdc.sh" 2>&1 | tee -a "${TEST_LOG}"
+
+elif [ "${LBDC_TEST_TYPE}" == "git" ]; then
+    export LBDC_INSTALL_SOURCE_TYPE="git"
+    export LBDC_INSTALL_GIT_LOCATION="feat/first_draft"
+    export LBDC_INSTALL_NOCLEAN_WORKING_DIR="true"
+
+    # Execute Install Phase
+    wget https://raw.githubusercontent.com/je-sidestuff/LocalbuildDevcontainer/${LBDC_INSTALL_GIT_LOCATION}/scripts/client/install_lbdc.sh
+    echo "Calling: ${LBDC_TEST_DIR}/install_lbdc.sh" | tee -a "${TEST_LOG}"
+    bash "${LBDC_TEST_DIR}/install_lbdc.sh" 2>&1 | tee -a "${TEST_LOG}"
+fi
+
 
 # Verify
 verify_install_success
