@@ -50,7 +50,7 @@ fi
 verify_install_success
 
 # Inject Test Hooks for Bootstrap, Load, and Run Phases
-cp "${LBDC_INSTALL_SOURCE_LOCATION}/test/e2e/inject/vscode/test_launch.sh" \
+cp "${SCRIPT_DIR}/inject/vscode/test_launch.sh" \
     "${LBDC_TEST_DIR}/.devcontainer/launch.sh"
 
 # Run vscode to execute remaining phases (Load, Run) and print cleanup command
